@@ -1,0 +1,17 @@
+{
+  "projects": {
+    "default": "evote-test"
+  },
+  "targets": {
+    "evote-test": {
+      "hosting": {
+        "main": [
+          "EvoteTest"
+        ],
+        "pilih": [
+          "EvoteTestPilih"
+        ]
+      }
+    }
+  }
+}

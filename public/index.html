@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Evote test</title>
+
+  <!-- update the version number as needed -->
+  <script defer src="/__/firebase/7.2.1/firebase-app.js"></script>
+  <!-- include only the Firebase features as you need -->
+  <script defer src="/__/firebase/7.2.1/firebase-auth.js"></script>
+  <script defer src="/__/firebase/7.2.1/firebase-database.js"></script>
+  <script defer src="/__/firebase/7.2.1/firebase-messaging.js"></script>
+  <script defer src="/__/firebase/7.2.1/firebase-storage.js"></script> <!-- initialize the SDK after all desired features are loaded -->
+  <script defer src="/__/firebase/init.js"></script>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="mobile.css">
+  <link rel="stylesheet" href="tablet.css">
+  <link href='https://fonts.googleapis.com/css?family=Rubik' rel='stylesheet'>
+</head>
+
+<body>
+  <div id="box">
+    <img id="GambarUser" src="https://i.postimg.cc/XJ1KtCNW/Screenshot-33.png">
+    <input type="text" id="Name" placeholder="Username">
+    <br>
+    <img id="GambarPass" src="https://i.postimg.cc/mkc34ghH/Screenshot-34.png">
+    <input type="password" id="Pass" placeholder="Password">
+    <br>
+    <input type="button" id="Tombol" value="LOGIN" onclick="auth()">
+    <br>
+    <input type="button" id="Result" value="HASIL" style="font-weight:bold;" hidden>
+    <img id="GambarOrang" src="https://i.postimg.cc/W10Bj2JC/Asset-1.png">
+  </div>
+
+  <h4 id="Selamat">Selamat memilih<br>Gunakan hak pilihmu secara bijak!</h4>
+
+  <div id="PageDuaContainer" hidden>
+    <h4>Selamat datang</h4>
+    <h5> di laman resmi e-voting pemilihan Ketua dan Wakil Ketua<br> Himpunan Mahasiswa
+      Teknik Industri UGM <br>tahun 2019
+    </h5>
+    <input type="button" id="TombolPageDua" value=continue>
+    <img src="https://i.postimg.cc/PqhB5BWx/Asset-2.png" id="GambarStack">
+  </div>
+
+  <img id="PhotoCalonSatu" src="https://i.postimg.cc/rw3Kwf40/Screenshot-35.png" hidden>
+  <img id="PhotoCalonDua" style="width:300px;height:300px;" src="https://i.postimg.cc/CK8dBbCv/Screenshot-36.png" hidden>
+  <h4 id="Silakan" hidden>Silakan pilih calon Anda</h4>
+  <label id="CalonSatu" hidden>
+    <img id="PhotoCalonSatu" src="https://i.postimg.cc/rw3Kwf40/Screenshot-35.png">
+    <input type="radio" id="TombolCalonSatu" name="test" onclick="auth()">
+  </label>
+  <label id="CalonDua" hidden>
+    <img id="PhotoCalonDua" src="https://i.postimg.cc/CK8dBbCv/Screenshot-36.png">
+    <input type="radio" id="TombolCalonDua" name="test" onclick="auth()">
+  </label>
+  <input type="button" id="Back" value="SUBMIT" hidden disabled>
+
+  <h2 id="Thanks" hidden> Terimakasih telah berpartisipasi dalam<br>
+                   pesta demokrasi HMTI 2019<br>
+                   Let's set sail towards a better HMTI!
+  </h2>
+  <input type="button" id="Sudah" value="kembali" hidden>
+
+  <input type="button" id="BacktoHome" value="Back" hidden>
+  <div id="chartContainer" style="height: 370px; width: 50%;" hidden></div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // // 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
+      // // The Firebase SDK is initialized and available here!
+      //
+      // firebase.auth().onAuthStateChanged(user => { });
+      // firebase.database().ref('/path/to/ref').on('value', snapshot => { });
+      // firebase.messaging().requestPermission().then(() => { });
+      // firebase.storage().ref('/path/to/ref').getDownloadURL().then(() => { });
+      //
+      // // 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
+
+      try {
+        let app = firebase.app();
+        let features = ['auth', 'database', 'messaging', 'storage'].filter(feature => typeof app[feature] === 'function');
+        document.getElementById('load').innerHTML = `Firebase SDK loaded with ${features.join(', ')}`;
+      } catch (e) {
+        console.error(e);
+        document.getElementById('load').innerHTML = 'Error loading the Firebase SDK, check the console.';
+      }
+    });
+  </script>
+
+  <!-- The core Firebase JS SDK is always required and must be listed first -->
+  <script src="https://www.gstatic.com/firebasejs/7.2.1/firebase-app.js"></script>
+
+  <!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+  <script src="https://www.gstatic.com/firebasejs/7.2.1/firebase-analytics.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.2.1/firebase-firestore.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.2.1/firebase-database.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.2.1/firebase-auth.js"></script>
+
+  <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+
+  <script>
+    // Your web app's Firebase configuration
+    var firebaseConfig = {
+      apiKey: 
+      authDomain:
+      databaseURL:
+      projectId:
+      storageBucket:
+      messagingSenderId:
+      appId:
+      measurementId:
+    };
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+    firebase.analytics();
+    var database = firebase.database();
+  </script>
+  <script src="app.js"></script>
+  <script>
+    function show(jumlahSuaraSatu, jumlahSuaraDua, total) {
+      var chart = new CanvasJS.Chart("chartContainer", {
+        theme: "light2", // "light1", "light2", "dark1", "dark2"
+        exportEnabled: true,
+        animationEnabled: true,
+        title: {
+          text: "Pemilihan Calon"
+        },
+        data: [{
+          type: "pie",
+          startAngle: 25,
+          toolTipContent: "<b>{label}</b>: {y}%",
+          showInLegend: "true",
+          legendText: "{label}",
+          indexLabelFontSize: 16,
+          indexLabel: "{label} - {y}%",
+          dataPoints: [{
+              y: (jumlahSuaraSatu / total) * 100,
+              label: "Calon Nomor Satu"
+            },
+            {
+              y: (jumlahSuaraDua / total) * 100,
+              label: "Calon Nomor Dua"
+            }
+          ]
+        }]
+      });
+      chart.render();
+    }
+    // First we get the viewport height and we multiple it by 1% to get a value for a vh unit
+let vh = window.innerHeight * 0.01;
+// Then we set the value in the --vh custom property to the root of the document
+document.documentElement.style.setProperty('--vh', `${vh}px`);
+
+window.addEventListener('resize', () => {
+  // We execute the same script as before
+  let vh = window.innerHeight * 0.01;
+  document.documentElement.style.setProperty('--vh', `${vh}px`);
+});
+  </script>
+</body>
+
+</html>

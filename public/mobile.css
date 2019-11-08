@@ -1,0 +1,172 @@
+@media only screen and (max-width: 499px) {
+  body {
+    background-image: linear-gradient(to bottom right, #0F0640, #2A3385);
+    height: 100%;
+    font-family: 'Rubik';font-size: 22px;
+    color: white;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    background-repeat: no-repeat;
+    height: 100vh; /* Fallback for browsers that do not support Custom Properties */
+    height: calc(var(--vh, 1vh) * 100);
+  }
+  #GambarUser{
+    position: relative;
+    height: 7%;
+    top: 2.8%;
+    left: 21.5%;
+  }
+  #GambarPass{
+    position: relative;
+    height: 6.6%;
+    top: 2.6%;
+    left: 21.5%;
+  }
+  #Name,#Pass{
+    position: relative;
+    height: 5.3%;
+    width: 40%;
+    left: 20%;
+  }
+  #Tombol,#Result{
+    position: relative;
+    background-color: #fce303;
+    outline: none;
+    border: none;
+    bottom: 45%;
+    left: 33%;
+    cursor: pointer;
+    font-family: 'Rubik';
+  }
+  #Tombol{
+    width: 25%;
+    height: 5%;
+    font-weight:bold;
+    top:3%;
+    left: 35%;
+  }
+  #Result{
+    width: 5%;
+    height: 5%;
+    left: 95%;
+    font-weight:bold;
+    top:18%;
+  }
+  #box{
+    position: relative;
+    top:23%;
+    height: 80%;
+    width: 100%;
+  }
+  #GambarOrang{
+    display: none;
+  }
+  #Selamat{
+    position:relative;
+    bottom:8%;
+    left: 5%;
+    font-size: 18px;
+  }
+  #TombolPageDua{
+    position: relative;
+    background-image: linear-gradient(to bottom right, #43AB96, #74C4B2);
+    border: none;
+    border-radius: 5px;
+    color: white;
+    width: 25%;
+    height: 4%;
+    bottom: 40px;
+    cursor: pointer;
+    outline: none;
+    font-family: 'Rubik';
+  }
+  #GambarStack{
+    position: relative;
+    width: 40%;
+    left: 20%;
+    top: 60px;
+    height: 20%;
+  }
+  #PageDuaContainer{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    left: 10%;
+    top: 20%;
+    font-size: 16px;
+  }
+  #CalonSatu{
+    position: relative;
+    top:68px;
+    left: 25%;
+    cursor: pointer;
+  }
+  #PhotoCalonSatu{
+    position: relative;
+    height: 20%;
+    top: 40%;
+    width: 40%;
+    right: 20%;
+  }
+  #TombolCalonSatu{
+    position: relative;
+    top: 50px;
+    right: 45%;
+  }
+  #CalonDua{
+    position: relative;
+    bottom: 82px;
+    left: 40%;
+    width: 10px;
+    cursor: pointer;
+  }
+  #PhotoCalonDua{
+    position: relative;
+    top: 150px;
+    height: 20%;
+    width: 40%;
+    right: 35%;
+  }
+  #TombolCalonDua{
+    position: relative;
+    top: 200px;
+    right: 60%;
+  }
+  #Back{
+    position: relative;
+    top: 179px;
+    left: 37%;
+    background-color: #fce303;
+    border:none;
+    width: 25%;
+    height: 4%;
+    font-weight: bold;
+    cursor: pointer;
+    font-family: 'Rubik';
+  }
+  #Silakan{
+    position: relative;
+    left: 15%;
+    top: 3%;
+  }
+  #Sudah{
+    position: relative;
+    background-image: linear-gradient(to bottom right, #43AB96, #74C4B2);
+    border: none;
+    border-radius: 5px;
+    color: white;
+    width: 30%;
+    height: 4%;
+    top: 250px;
+    left: 6%;
+    font-family: 'Rubik';
+    cursor: pointer;
+    outline: none;
+  }
+  #Thanks{
+    position: relative;
+    left: 5%;
+    top: 30%;
+    font-size: 16px;
+  }
+}
